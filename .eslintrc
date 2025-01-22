@@ -27,6 +27,8 @@
     "no-unused-vars": [1, {"vars": "local", "args": "none"}],
     "consistent-return": ["error", { "treatUndefinedAsUnspecified": true }],
     "no-param-reassign": [2, { "props": false }],
+    "react/jsx-no-bind": 0,
+    "react/require-default-props": 0,
     "react/self-closing-comp": ["error", {
       "component": true,
       "html": false
@@ -36,8 +38,7 @@
       { "ignorePureComponents": true
     }],
     "class-methods-use-this": 0,
-    "react/jsx-no-bind": [2, {"allowBind": true, "allowArrowFunctions": true}],
-    "no-return-assign": [2, "except-parens"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

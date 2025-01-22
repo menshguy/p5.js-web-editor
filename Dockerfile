@@ -9,7 +9,9 @@ EXPOSE 8002
 FROM base AS development
 ENV NODE_ENV development
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm cache clean --force && \
+    npm install --legacy-peer-deps && \
+    npm install ajv@8.12.0 --legacy-peer-deps
 COPY .babelrc index.js nodemon.json ./
 COPY ./webpack ./webpack
 COPY client ./client
@@ -25,6 +27,7 @@ RUN npm run build
 FROM base AS production
 ENV NODE_ENV=production
 COPY package.json package-lock.json index.js ./
-RUN npm install --production
+RUN npm install --production --legacy-peer-deps && \
+    npm install ajv@8.12.0 --legacy-peer-deps
 COPY --from=build $APP_HOME/dist ./dist
 CMD ["npm", "run", "start:prod"]
